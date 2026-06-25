@@ -1,0 +1,49 @@
+:root{
+  --bg:#13111c; --card:#211d33; --ink:#ece9f7; --muted:#a9a3c4;
+  --pink:#ff5d7e; --cyan:#46e0c8; --line:#322c47;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:radial-gradient(1200px 600px at 50% -10%, #241f3a 0%, var(--bg) 60%);
+  color:var(--ink);line-height:1.6}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.site{position:sticky;top:0;z-index:5;backdrop-filter:blur(8px);
+  background:rgba(19,17,28,.82);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-weight:800;letter-spacing:.5px;color:var(--ink);font-size:18px;white-space:nowrap}
+.brand b{color:var(--pink)}
+nav a{color:var(--muted);margin-left:18px;font-size:14px;font-weight:600}
+nav a:hover{color:var(--ink);text-decoration:none}
+.hero{padding:64px 0 36px;text-align:center}
+.hero h1{font-size:clamp(28px,6vw,46px);margin:.2em 0;letter-spacing:1px;line-height:1.15}
+.hero h1 .hl{color:var(--pink)}
+.hero p.lede{color:var(--muted);font-size:18px;max-width:620px;margin:14px auto 26px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-block;padding:13px 20px;border-radius:10px;font-weight:700;border:1px solid var(--line);transition:transform .12s ease}
+.btn.primary{background:var(--pink);color:#1a0d14;border-color:var(--pink)}
+.btn.alt{background:var(--card);color:var(--ink)}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+section{padding:34px 0;border-top:1px solid var(--line)}
+h2{font-size:24px;margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.buy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.buy-grid h3{margin:.2em 0 .4em;color:var(--cyan);font-size:16px}
+.buy-grid ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.quote{font-style:italic;color:var(--muted);margin:0}
+.contact-list{list-style:none;padding:0;margin:0;font-size:17px}
+.contact-list li{margin:10px 0}
+form label{display:block;font-size:14px;color:var(--muted);margin:12px 0 4px}
+form input,form textarea{width:100%;padding:11px;border-radius:9px;border:1px solid var(--line);
+  background:#171426;color:var(--ink);font:inherit}
+form button{margin-top:16px;padding:12px 22px;border:0;border-radius:10px;background:var(--pink);
+  color:#1a0d14;font-weight:700;cursor:pointer}
+.legal{max-width:760px}
+.legal h2{margin-top:28px;font-size:20px;color:var(--cyan)}
+.legal p,.legal li{color:#d7d3ea}
+.muted{color:var(--muted);font-size:14px}
+footer.site{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px;margin-top:20px}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between}
+footer.site a{color:var(--muted)}
