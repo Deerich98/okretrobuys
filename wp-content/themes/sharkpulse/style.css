@@ -1,0 +1,335 @@
+/*
+Theme Name: Sharkpulse
+Theme URI: https://themegrove.com/products/sharkpulse/
+Author: Themegrove
+Author URI: https://themegrove.com/
+Description: Elevate your online presence with Sharkpulse, a cutting-edge WordPress theme designed for full-site editing. Immerse yourself in a seamless website customization experience where every element is at your fingertips. From dynamic homepage arrangements to personalized portfolio showcases, Sharkpulse empowers you to sculpt a modern, urban-inspired digital space that resonates with your unique style. With its intuitive controls and visually stunning layouts, this theme transforms your WordPress journey into a creative exploration of urban aesthetics and functional design. Welcome to Sharkpulse – where your website becomes a canvas for your digital expression. demo: https://demos.themegrove.com/sharkpulse/
+Requires at least: 6.4
+Tested up to: 6.4
+Requires PHP: 7.0
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: sharkpulse
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, blog, portfolio, news
+*/
+
+html {
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+}
+
+
+body {
+	margin: 0;
+}
+
+
+main {
+	display: block;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+
+
+pre {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+abbr[title] {
+	border-bottom: none;
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+
+img {
+	border-style: none;
+}
+
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+
+button,
+input {
+	overflow: visible;
+}
+
+
+button,
+select {
+	text-transform: none;
+}
+
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+fieldset {
+	padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+
+textarea {
+	overflow: auto;
+}
+
+
+[type="checkbox"],
+[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+
+[type="search"] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
+
+details {
+	display: block;
+}
+
+
+summary {
+	display: list-item;
+}
+
+
+template {
+	display: none;
+}
+
+
+[hidden] {
+	display: none;
+}
+
+footer.wp-block-template-part {
+    margin: 0;
+}
+.orderby{
+	padding: 15px;
+}
+
+/* -------------- pagination start----------------*/
+
+.page-numbers{
+	background: var(--wp--preset--color--primary);
+    margin: 0 5px 5px 0;
+    padding: 6px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: inline-block;
+    color: var(--wp--preset--color--base);
+}
+
+.page-numbers:hover{
+	color: var(--wp--preset--color--white) ;
+}
+
+.page-numbers.dots{
+	background-color: transparent;
+}
+
+.wp-block-query-pagination{
+	gap: 10px;
+}
+
+/* -------------- pagination End----------------*/
+
+/* -------------- woocommerce-breadcrumb ----------------*/
+
+.woocommerce .woocommerce-breadcrumb,.woocommerce .woocommerce-breadcrumb a {
+	color: var(--wp--preset--color--link-color);
+}
+/* -------------- woocommerce-breadcrumb end----------------*/
+
+/* -------------- header navigation ----------------*/
+.wp-block-navigation-item__content {
+    padding-bottom: 3px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wp-block-navigation-item__content::before {
+    margin-top: 0px;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    height: 2px;
+    background: var(--wp--preset--color--contrast-2); 
+    transition: right 0.3s;
+	text-decoration: none;
+  }
+
+
+  .wp-block-navigation-item__content:hover::before {
+    right: 0;
+  }
+  .wp-block-navigation-submenu li a:hover::before{
+    right: 50%;
+  }
+/* -------------- header navigation  ----------------*/
+
+
+/* scrool to top */
+.sharkpulse-scrool-top::before{
+
+    font-size: 30px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--wp--preset--color--link-color);
+	content: '\f343'; 
+	font-family: 'dashicons';
+    font-weight: 600;
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+}
+
+
+/* scrool to top */
+
+/* dashicon before categories, tag and date start */
+
+.wp-block-archives-list.wp-block-archives li::before ,
+.wp-block-categories-list.wp-block-categories li::before, .taxonomy-category a::before {
+    font-family: 'dashicons'; 
+    content: '\f318'; 
+    margin-right: 8px; 
+}
+.wp-block-archives-list.wp-block-archives li,
+.wp-block-categories-list.wp-block-categories li{
+	list-style-type: none;
+}
+.wp-block-archives-list.wp-block-archives,
+.wp-block-categories-list.wp-block-categories, .taxonomy-category a{
+	padding-left: 10px;
+}
+
+.wp-block-tag-cloud a.tag-cloud-link{
+  font-size: 16px!important;
+}
+
+.tag-cloud-link::before, .taxonomy-post_tag a:before{
+	font-family: 'dashicons'; 
+    content: '\f323'; 
+    margin-right: 8px; 
+}
+.tag-cloud-link, .taxonomy-post_tag a{
+	text-decoration: none;
+	background: var(--wp--preset--color--primary);
+    margin: 0 5px 5px 0;
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: inline-block;
+    color: var(--wp--preset--color--base);
+	text-decoration: none;
+}
+
+.products-block-post-template li{
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+p.sharkpulse-scrool-top {
+    position: absolute;
+}
+
+.column-has-radius {
+    border-radius: 10px;
+}
+
+.wc-block-components-product-sale-badge.wc-block-components-product-sale-badge--align-right.wc-block-grid__product-onsale {
+    background: #cf0000;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+}
