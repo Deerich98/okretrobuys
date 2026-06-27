@@ -2,6 +2,10 @@
 
 > Diagnosed live 2026-06-26. The site is **GitHub Pages + Cloudflare DNS**. HTTPS here is
 > **GitHub's own Let's Encrypt cert** (free, auto-renewing) — Cloudflare is DNS only, not a proxy.
+>
+> **✅ RESOLVED 2026-06-26** — apex now serves a valid `CN=okretrobuys.com` cert and **Enforce HTTPS**
+> is ticked. The lingering "Not Secure" turned out to be a **stale browser-cached** `*.github.io` cert,
+> not a server fault. Full story in **Resolution** below.
 
 ## Findings (state as of 2026-06-26)
 
@@ -12,12 +16,39 @@
 | `CNAME` file in repo | `okretrobuys.com` | ✅ correct |
 | Cloudflare proxy mode | **DNS-only (grey cloud)** — `dig` returns GitHub IPs, not Cloudflare's | ✅ correct (required) |
 | Nameservers | `lilith` / `gabriel.ns.cloudflare.com` | ✅ Cloudflare is DNS host |
-| Cert served at `https://okretrobuys.com` | `CN=*.github.io` (generic GitHub cert) | ❌ **not yet issued for our domain** |
+| Cert served at `https://okretrobuys.com` | `CN=okretrobuys.com` (Let's Encrypt, issued 6/26, exp 9/24; verified 5/5 GitHub edges) | ✅ **issued & serving** |
 
-**Conclusion:** DNS is fully correct and has been long enough to verify. The *only* missing piece is
-that GitHub has not yet provisioned the Let's Encrypt certificate **bound to `okretrobuys.com`** — it's
-still serving the generic `*.github.io` cert, so a browser hitting the apex sees a name mismatch and
-HTTPS fails. This is a one-step finish in the GitHub repo settings, not a DNS problem.
+## Resolution (2026-06-26)
+
+✅ **HTTPS is live.** Once the GitHub Pages **DNS check** passed, GitHub auto-provisioned the Let's
+Encrypt cert bound to `okretrobuys.com`, and **Enforce HTTPS** was ticked. Verified
+`subject=CN=okretrobuys.com` from **5/5** GitHub Fastly edges (issued 6/26, expires 9/24);
+`https://okretrobuys.com` → `HTTP/2 200`.
+
+**The gotcha that cost us ~an hour — a browser-cache red herring.** After the cert was already live
+server-side, the founder's Chrome kept showing **"Not Secure"** with a Certificate Viewer reading
+`CN=*.github.io`, *"Issued On June 4."* That was a **stale cert cached in Chrome** — the
+pre-provisioning `*.github.io` fallback held in a kept-alive TLS connection — **not** a server problem.
+The tell: a fresh `openssl` check from a terminal returned the *correct* `CN=okretrobuys.com` every
+time, across all edges, while the browser showed the old one.
+
+- A plain **tab reload reuses the cached cert** and does NOT clear it.
+- **Fix:** open an **Incognito window (⌘⇧N)** — fresh handshake, no cache → padlock; then **fully quit
+  Chrome (⌘Q)** and reopen to drop the cached connection in the normal window. (Or check on phone over
+  cellular.)
+- **Diagnostic rule going forward:** run the `openssl` check in **Verify** below. If it returns
+  `CN=okretrobuys.com`, the **server is correct** and any remaining "Not Secure" is **purely local
+  browser cache** — clear the browser, don't touch GitHub or DNS.
+
+---
+
+### Original diagnosis (kept for the record)
+
+**Conclusion (as first found):** DNS was fully correct; the only missing piece was that GitHub had not
+yet provisioned the Let's Encrypt certificate **bound to `okretrobuys.com`** — it was still serving the
+generic `*.github.io` cert, so the apex name-mismatched. This was a one-step finish in the GitHub repo
+settings (tick Enforce HTTPS once the cert reads `approved`), not a DNS problem. *(Resolved — see
+above.)*
 
 ## Finish steps (GitHub web UI — founder)
 
