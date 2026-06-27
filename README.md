@@ -8,5 +8,6 @@ The home + contact pages are a faithful copy of the original WordPress/Elementor
 - `wp-content/`, `wp-includes/` — theme, Elementor, images, core assets
 - `privacy/`, `terms/` — hand-built legal pages (Meta-ready privacy)
 - `CNAME` binds okretrobuys.com · `.nojekyll` serves files as-is
+- `HTTPS-SETUP.md` — cert runbook + findings (DNS is correct; finish HTTPS in repo Settings → Pages)
 
 Note: the contact form is static (no WordPress backend) — wire to a form service before relying on it.
