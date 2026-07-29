@@ -101,6 +101,13 @@ const header = (depth) => `
   </div>
 </header>`;
 
+// Blog pageview beacon (SPEC-ANALYTICS-INSTRUMENTATION v1, component 3 — the okrb leg).
+// A counter, not analytics: fire-and-forget POST to the shared log-pageview edge fn
+// (verify_jwt=false; server-side bot filter + RPC gate). Never throws, never blocks paint.
+const beacon = `<script>
+(function(){try{fetch("https://cvhhgyubshecbjbjekhn.supabase.co/functions/v1/log-pageview",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({site:"okrb",path:location.pathname}),keepalive:true}).catch(function(){})}catch(e){}})();
+</script>`;
+
 const footer = `
 <footer class="site-footer">
   <div class="wrap">
@@ -189,7 +196,7 @@ ${header("post")}
   </article>
 </main>
 ${footer}
-
+${beacon}
 </body>
 </html>
 `;
@@ -238,7 +245,7 @@ ${cards}
   </section>
 </main>
 ${footer}
-
+${beacon}
 </body>
 </html>
 `;
